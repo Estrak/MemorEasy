@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import FirstScreen from './screen/firstScreen.js';
-import Presentation from './screen/presentation.js';
+import FirstScreen from './screens/firstScreen.js';
+import Presentation from './screens/presentation.js';
 
 const Stack = createStackNavigator();
 

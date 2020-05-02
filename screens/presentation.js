@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-import FlatButton from '../../components/flatButton.js';
-import Dot from '../../components/dot.js';
+import FlatButton from './../components/flatButton.js';
+import Dot from './../components/dot.js';
 
 const text = [
   "MemorEasy est une application aidant la génération de mot de passe personnalisé et facile à retrouver.",
