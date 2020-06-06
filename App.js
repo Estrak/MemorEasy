@@ -1,36 +1,73 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, {useState} from 'react';
+import { StyleSheet , View , ScrollView , Image , Text , FlatList , TouchableHighlight} from 'react-native';
+import * as Font from 'expo-font';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import { AppLoading } from 'expo';
+import modulesData from './Helpers/modulesData.js';
 
-import FirstScreen from './screens/firstScreen.js';
-import Presentation from './screens/presentation.js';
-import HomePage from './screens/homePage.js';
 
-const Stack = createStackNavigator();
+const getFonts = () => Font.loadAsync({
+    'Rubik': require('./assets/fonts/Rubik-Light.ttf')
+  });
 
-export default class App extends React.Component {
-  render(){
+const onLongPressButton = () => alert('hello');
+
+
+export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+
+
+  if(fontsLoaded){
     return (
-      <NavigationContainer>
-          <Stack.Navigator //Pour cacher la barre supérieure avec le nom des menus
-            screenOptions={{
-              headerShown: false
-            }}
-          >
-          <Stack.Screen
-            name='homePage'
-            component={HomePage}/>
-            <Stack.Screen
-              name='firstScreen'
-              component={FirstScreen}
-              options={{ title: 'Overview'}}/>
+      <View style={{flex:1, backgroundColor:'#303030'}}>
+      <Header/>
+        <FlatList 
+          data={modulesData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item}) => 
+            <TouchableHighlight style={styles.DivModule}
+            onLongPress={onLongPressButton} 
+            underlayColor="white">
+              <Text>{item.title}</Text>
+            </TouchableHighlight>
+          }
 
-            <Stack.Screen
-              name='presentation'
-              component={Presentation}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+        />
+      <Footer/>
+      </View>
+    );
+  } else {
+    return (
+    <AppLoading
+      startAsync={getFonts}
+      onFinish={()=> setFontsLoaded(true)}
+    />
     );
   }
+  
 }
+
+const styles = StyleSheet.create({
+
+  DivModule:{
+    padding : 10,
+    marginBottom: 8,
+    backgroundColor: '#C4C4C4',
+    width: 100,
+    borderRadius: 10/2,
+    opacity: 0.5,
+    zIndex:1,
+  },
+  DivModuleUnder:{
+   
+    backgroundColor: '#C4C4C4',
+    width: 100,
+    borderRadius: 10/2,
+    opacity: 0.5,
+    zIndex: 0,
+    position: 'absolute'
+  },
+
+})
