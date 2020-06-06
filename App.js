@@ -9,16 +9,20 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="firstScreen">
-        <Stack.Screen
-          name='firstScreen'
-          component={FirstScreen}
-          options={{ title: 'Overview'}}/>
-        <Stack.Screen
-          name='presentation'
-          component={Presentation}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <FirstScreen>
+
+    </FirstScreen>
   )
 }
+
+const styles = StyleSheet.create({
+  global: {
+    flex: 1,
+    backgroundColor: '#231F20',
+  },
+  container: {
+    alignItems: 'center',
+    color: 'white',
+    justifyContent: 'center',
+  },
+});
