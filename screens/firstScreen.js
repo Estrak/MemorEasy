@@ -1,6 +1,9 @@
 import React from 'react';
 import {View , Text, Button, StatusBar, StyleSheet, AsyncStorage} from 'react-native';
+import FlatButton from './../components/flatButton.js';
+
 var first = 'true';
+
 export default function FirstScreen({navigation}){
 
   return (
@@ -10,18 +13,23 @@ export default function FirstScreen({navigation}){
         <View style={styles.line}/>
         <Text style={{color: '#fff', fontSize: 30, textAlign: 'center'}}>MemorEasy</Text>
         <View style={styles.line}/>
-        <View style={{paddingHorizontal:70, marginTop: 70}}>
-          <Button onPress={() => {
-              
+        <View style={styles.button}>
+          <FlatButton
+            text="Commencer"
+            backgroundColor='#7EB1BB'
+            color='#202020'
+            type="solid"
+            onPress={() => {
+
               AsyncStorage.getItem('firstTime').then((value) => {first = ""+value});
               if(first == 'true'){ //si première navigation --> tutoriel
 
-                navigation.navigate('presentation');
-              }else { //si on a déjà vu le tuto --> ....
+              navigation.navigate('presentation');
+            }else { //si on a déjà vu le tuto --> ....
 
-                //navigation.navigation('');
-              }
-            }} title="Commencer" color="#7EB1BB"/>
+              //navigation.navigation('');
+            }
+          }} />
         </View>
       </View>
     </View>
@@ -41,16 +49,12 @@ const styles = StyleSheet.create({
   },
   line: {
     height: 2,
-    marginLeft: 32,
-    marginRight: 32,
-    marginTop: 16,
-    marginBottom: 16,
+    marginVertical: 16,
+    marginHorizontal: 32,
     backgroundColor: '#fff'
   },
   button: {
-    borderRadius: 2,
-    color: '#8EF1FF',
-    marginLeft: 30,
-    marginRight: 30
+    marginHorizontal: 50,
+    marginVertical:32
   }
 });
