@@ -12,9 +12,14 @@ export default function FirstScreen({navigation}){
         <View style={styles.line}/>
         <View style={{paddingHorizontal:70, marginTop: 70}}>
           <Button onPress={() => {
+              
               AsyncStorage.getItem('firstTime').then((value) => {first = ""+value});
-              if(first == 'true'){
+              if(first == 'true'){ //si première navigation --> tutoriel
+
                 navigation.navigate('presentation');
+              }else { //si on a déjà vu le tuto --> ....
+
+                //navigation.navigation('');
               }
             }} title="Commencer" color="#7EB1BB"/>
         </View>
@@ -22,7 +27,6 @@ export default function FirstScreen({navigation}){
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
