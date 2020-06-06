@@ -1,7 +1,8 @@
 import React from 'react';
-import {View , Text, Button, StatusBar, StyleSheet} from 'react-native';
-
+import {View , Text, Button, StatusBar, StyleSheet, AsyncStorage} from 'react-native';
+var first = 'true';
 export default function FirstScreen({navigation}){
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#303030"/>
@@ -10,12 +11,18 @@ export default function FirstScreen({navigation}){
         <Text style={{color: '#fff', fontSize: 30, textAlign: 'center'}}>MemorEasy</Text>
         <View style={styles.line}/>
         <View style={{paddingHorizontal:70, marginTop: 70}}>
-          <Button onPress={() => {navigation.navigate('presentation')}} title="Commencer" color="#7EB1BB"/>
+          <Button onPress={() => {
+              AsyncStorage.getItem('firstTime').then((value) => {first = ""+value});
+              if(first == 'true'){
+                navigation.navigate('presentation');
+              }
+            }} title="Commencer" color="#7EB1BB"/>
         </View>
       </View>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

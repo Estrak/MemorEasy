@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, View, Text, StyleSheet} from 'react-native';
+import {Image, View, Text, StyleSheet, AsyncStorage} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import FlatButton from './../components/flatButton.js';
@@ -15,6 +15,9 @@ const text = [
 ];
 
 export default function Presentation({navigation}){
+
+  AsyncStorage.setItem('firstTime','false');
+
   const [num, SetNum] = useState(0);
   return (
     <View style={styles.main}>

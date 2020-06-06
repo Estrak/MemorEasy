@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
+import { View, Text, StyleSheet, TouchableNativeFeedback, TouchableHighlight } from 'react-native';
 
 export default function FlatButton( { text, backgroundColor, color, type, style, onPress }){
   if (Platform.OS === 'android') {
