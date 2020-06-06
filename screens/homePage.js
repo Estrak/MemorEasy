@@ -6,7 +6,7 @@ import MemorEasyPage from '../includes/memorEasyPage.js';
 export default function HomePage({navigation}){
   return (
     <MemorEasyPage>
-      <Text>Testeeeeeeezze</Text>
+      <Text>Testeeeezze</Text>
     </MemorEasyPage>
   );
 }

@@ -21,7 +21,7 @@ export default class App extends React.Component {
           <Stack.Screen
             name='homePage'
             component={HomePage}/>
-            
+
             <Stack.Screen
               name='firstScreen'
               component={FirstScreen}/>
