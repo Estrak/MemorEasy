@@ -2,22 +2,26 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import MemorEasyHeader from './memorEasyHeader';
+import MemorEasyFooter from './memorEasyFooter';
 
 const MemorEasyPage = props => {
   return (
-      <View>
+      <View style={styles.globalPage}>
         <MemorEasyHeader/>
-        <Text>Test</Text>
         <View style={{...styles.boxContainer, ...props.style}}>
           {props.children}
         </View>
+        <MemorEasyFooter/>
       </View>
     );
 };
 
 const styles = StyleSheet.create({
-  boxContainer:{
+  globalPage:{
     flex: 1,
+    backgroundColor: 'blue',
+  },
+  boxContainer:{
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
