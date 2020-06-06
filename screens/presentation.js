@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Image, View, Text, StyleSheet} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import FlatButton from './../components/flatButton.js';
@@ -8,7 +8,7 @@ import Dot from './../components/dot.js';
 const text = [
   "MemorEasy est une application aidant la génération de mot de passe personnalisé et facile à retrouver.",
   "La création d’un mot de passe avec Memor’Easy se fait à partir d’une phrase simple, courte et personnelle, du nom du site et de plusieurs règles (modules) qui génèrent des caractères.",
-  "3",
+  "",
   "Cette méthode permet de générer des mots de passe complexe avec des lettres, des chiffres et des caractères spéciaux.",
   "Il vous suffit de retenir votre phrase perso et les modules que vous utilisez.",
   "Pour finir la configuration de l’application choisissez vos modules et entrer votre phrase en appuyant sur Continuer."
@@ -19,7 +19,10 @@ export default function Presentation({navigation}){
   return (
     <View style={styles.main}>
       <View  style={styles.container}>
-        <Text style={styles.text}>{text[num]}</Text>
+        { num==2
+          ? <Image style={styles.image} source={require('./../components/schema.gif')}/>
+          : <Text style={styles.text}>{text[num]}</Text>
+        }
       </View>
       <View style={styles.dots}>
         <Dot isActive={num==0}/>
@@ -91,5 +94,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 20,
     marginBottom: 50
+  },
+  image:{
+    width:"95%",
+    height: "80%",
+    resizeMode: "stretch",
+    alignSelf:"center",
   }
 });
