@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import MemorEasyHeader from '../includes/memorEasyHeader.js';
+import MemorEasyHeader from './memorEasyHeader';
 
 const MemorEasyPage = props => {
   return (
-      <View style={{...styles.boxContainer, ...props.style}}>
+      <View>
         <MemorEasyHeader/>
         <Text>Test</Text>
-        {props.children}
+        <View style={{...styles.boxContainer, ...props.style}}>
+          {props.children}
+        </View>
       </View>
     );
 };
