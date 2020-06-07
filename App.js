@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { StyleSheet , View , ScrollView , Image , Text , FlatList , TouchableHighlight} from 'react-native';
 import * as Font from 'expo-font';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import { AppLoading } from 'expo';
 import modulesData from './Helpers/modulesData.js';
 

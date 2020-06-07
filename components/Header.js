@@ -9,7 +9,7 @@ class Header extends React.Component{
 	return(
 	<View style={styles.Container}> 
     <View style={styles.divTinyLogo}>
-      <Image style={styles.tinyLogo} source={require('../assets/img/logo.png')}/>
+      <Image style={styles.tinyLogo} source={require('../assets/splash.png')}/>
   	</View>
     <View style={styles.divTitleText}>
     <Text style={styles.titleText}>Memor'Easy</Text>
