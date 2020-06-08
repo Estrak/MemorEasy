@@ -26,12 +26,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center', 
     backgroundColor: "#515151", 
-    height: 85,
+    height: 105,
     elevation: 10,
     shadowColor: 'black',
     shadowOffset: { width: 5, height: 5 },
     shadowOpacity: 0.5,
-    shadowRadius: 10
+    shadowRadius: 10,
+    paddingTop: 20
   },
 
   divTinyLogo:{
