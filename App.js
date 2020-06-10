@@ -1,32 +1,75 @@
 import React, {useState} from 'react';
-import { StyleSheet , View , ScrollView , Image , Text , FlatList , TouchableHighlight, StatusBar} from 'react-native';
+import { StyleSheet , View , ScrollView , Image , Text , FlatList , TouchableHighlight, StatusBar , Button , Alert , Modal, TextInput} from 'react-native';
 import * as Font from 'expo-font';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { AppLoading } from 'expo';
 import modulesData from './Helpers/modulesData.js';
-import DraggableFlatList from 'react-native-draggable-dynamic-flatlist'
-
-
-const getFonts = () => Font.loadAsync({
-		'Rubik': require('./assets/fonts/Rubik-Light.ttf')
-	});
-
 
 export default function App() {
 	const [fontsLoaded, setFontsLoaded] = useState(false);
+	const getFonts = () => Font.loadAsync({
+		'Rubik': require('./assets/fonts/Rubik-Light.ttf')
+	});
+	const [modalOpen, setModalOpen] = useState(false);
+
+	var tab = 0;
+	var arr = Array(3);
+	var arrstring = arr.toString()
+	var i = 0
+	
+	var classModules = (module) => {
+		arr[tab] = module;
+		arr.length = 3;
+		tab++;
+			if (tab == 3){
+			var arrstring = arr.toString();
+			Alert.alert("Les modules sélectionnés sont :",arrstring);
+			}
+	}
+
+	var unfillarray = () => {
+		if (tab => 3)
+		{
+			arr = ['','','']
+			tab = 0;
+		}
+	}
+
+var retrievePhrase = (text) => {
+	var phrase = text;
+	if (text.length > 12) alert(phrase);
+
+}
 
 	if(fontsLoaded){
 		return (
 			<View
 			style={{flex:1, backgroundColor:'#303030'}}
 			>
+			<Modal visible={modalOpen} animationType="fade">
+				<View
+			style={{flex:1, backgroundColor:'#303030'}}
+			>
+			<Header/>
+				<View style={styles.HeaderInfo}>
+					<Text style={styles.HeaderInfoText}>
+					Entrez votre phrase personnelle (3/4 mots). Encryptée par les modules, elle formera votre futur mot de passe.
+					</Text>
+				</View>
+				<TextInput maxLength={15} style={styles.TextInputPhrase} onChangeText={(text) => {retrievePhrase(text)}} />
+			<View style={{justifyContent:'flex-end'}}><Button title="Valider" style={{height:50}} color="#c8e3af"/>
+			<Button title="Retour" style={{height:50}} color="#FFD48E" onPress={() => setModalOpen(false)}/>
+			</View>
+			</View>
+			</Modal>
+
 			<StatusBar   
 			 hidden={true} />  
 			<Header/>
 				<View style={styles.HeaderInfo}>
 					<Text style={styles.HeaderInfoText}>
-					Classez les modules algorithmiques selon votre choix. Les trois premiers seront pris en compte. Appuyez sans maintenir pour plus de détails sur le module.
+					Classez les modules algorithmiques selon votre choix. Les trois premiers seront pris en compte. Maintenez un module pour plus de détails sur celui-ci.
 					</Text>
 				</View>
 				<FlatList contentContainerStyle={styles.Flatlist}
@@ -34,14 +77,19 @@ export default function App() {
 					keyExtractor={(item) => item.id.toString()}
 					renderItem={({item}) => 
 						<TouchableHighlight style={styles.DivModule}
-						onPress={() => alert(modulesData[item.id - 1].overview)}
-						onLongPress={() => alert("drag and drop")}  
+						onLongPress={() => Alert.alert("Description du "+modulesData[item.id - 1].title+" : ",modulesData[item.id - 1].overview)}
+						onPress={() => {classModules(modulesData[item.id -1].title)}}  
 						underlayColor="#D8DFE3">
 							<Text style={{fontSize:16}}>{item.title}</Text>
 						</TouchableHighlight>
 					}
 				/>
-			<Footer/>
+			<Button title="Suivant" style={{height:50}} color="#c8e3af" onPress={() => setModalOpen(true)}/>
+			<Button title="Annuler" style={{height:50}} color="#FFD48E" onPress={() => {unfillarray()}} disabled={false}>
+  		<Text style={{color:"black"}}>
+  		Annuler
+  		</Text>	
+  		</Button>
 			</View>
 		);
 	} else {
@@ -56,6 +104,20 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+
+	TextInputPhrase:{
+		backgroundColor:'#6D6D6D',
+		borderRadius:10/2,
+		height:40,
+		marginLeft:50,
+		marginRight:50,
+		marginTop:50,
+		borderColor:'white',
+		borderWidth:0.5,
+		marginBottom:60,
+		opacity:0.5,
+		textAlign:'center'
+	},
 
 	HeaderInfoText:{
 		fontSize:15,
