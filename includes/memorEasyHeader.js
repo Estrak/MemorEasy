@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     height: 105,
     elevation: 10,
     shadowColor: 'black',
-    shadowOffset: { width: 5, height: 5 },
+    shadowOffset: { width: 5, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
     paddingTop: 20
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     elevation: 10,
 
     shadowColor: 'black',
-    shadowOffset: { width: -2, height: 15 },
+    shadowOffset: { width: -2, height: 10 },
     shadowOpacity: 0.4,
     shadowRadius: 10
   },

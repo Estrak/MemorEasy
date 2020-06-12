@@ -12,26 +12,32 @@ export default function HomePage({navigation}){
     direction="horizontal"
     imageName= "modifications"
     backgroundColor='#FFE074'
-    onPress={ () => {} }/>;
+    onPress={ () => {
+      navigation.navigate('modules')
+    } }/>;
 
   return (
     // Ajout du Header + Footer
+
     <MemorEasyPage style={styles.page}
       footerContent={footerContent}>
-      //Content de la Page
 
       <ImagedButton
         text= "S'entrainer !"
         imageName= "sentrainer"
         backgroundColor='#51CBE5'
-        onPress={ () => {} }/>
+        onPress={ () => {
+          navigation.navigate('train')
+        } }/>
 
       <ImagedButton
         text= "Créer un Mot de passe !"
         direction="vertical"
         imageName= "creerunmotdepasse"
         backgroundColor='#54EB75'
-        onPress={ () => {} }/>
+        onPress={ () => {
+          navigation.navigate('creationMDP')
+        } }/>
     </MemorEasyPage>
   );
 }

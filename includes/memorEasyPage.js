@@ -8,9 +8,11 @@ const MemorEasyPage = props => {
   return (
       <View style={styles.globalPage}>
         <MemorEasyHeader/>
+
         <View style={{...styles.boxContainer, ...props.style}}>
           {props.children}
         </View>
+
         <MemorEasyFooter
           content={props.footerContent}
         />
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   },
   boxContainer:{
     flex: 1,
-    marginTop: 30,
+    marginTop: 50,
     marginBottom: 30,
     alignItems: 'center',
     justifyContent: 'center'

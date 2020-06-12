@@ -3,7 +3,8 @@ import { View, Image, Text, StyleSheet, TouchableNativeFeedback, TouchableHighli
 
 var sentrainerPNG = require('../assets/imageButton/sentrainer.png'),
     modificationsPNG = require('../assets/imageButton/modifications.png'),
-    creerunmotdepassePNG = require('../assets/imageButton/creerunmotdepasse.png');
+    creerunmotdepassePNG = require('../assets/imageButton/creerunmotdepasse.png'),
+    homePNG = require('../assets/imageButton/home.png');
 
 /// direction = horizontal || vertical
 export default function ImagedButton( { text, imageName, direction, backgroundColor, onPress }){
@@ -17,6 +18,9 @@ export default function ImagedButton( { text, imageName, direction, backgroundCo
       break;
     case 'creerunmotdepasse':
       var imagePath = creerunmotdepassePNG;
+      break;
+    case 'home':
+      var imagePath = homePNG;
       break;
     default:
       var imagePath = sentrainerPNG;
